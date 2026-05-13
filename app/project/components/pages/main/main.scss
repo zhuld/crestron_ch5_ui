@@ -45,7 +45,7 @@
   --ch5-button-background-active: linear-gradient(115deg, #cde5ff, #b7d4fc);
   --ch5-button-bg-active-after: #ffffff;
   --ch5-button-box-shadow-active-after: 0 0 16px #66f0ff, 0 0 28px #00b3ff;
-  --ch5-button-lable:#124f6c;
+  --ch5-button-lable: #124f6c;
 }
 
 body.dark-theme {
@@ -88,7 +88,7 @@ body.dark-theme {
   --ch5-button-background-active: linear-gradient(115deg, #101836, #0a1436);
   --ch5-button-bg-active-after: #dcf5ff;
   --ch5-button-box-shadow-active-after: 0 0 16px #6af0ff, 0 0 28px #00c3ff;
-  --ch5-button-lable:#207da8;
+  --ch5-button-lable: #207da8;
 }
 
 /* ========== 基础重置 ========== */
@@ -144,7 +144,7 @@ body.dark-theme {
 
 /* ========== 主面板 - 科技容器 ========== */
 .control-panel {
-  width: 95vw;  
+  width: 95vw;
   height: 92vh;
   background: var(--bg-secondary);
   backdrop-filter: var(--backdrop-blur);
@@ -762,4 +762,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-bottom:
     1rem;
   display: block;
+}
+
+/* loader 内容 */
+.loader-content {
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+  color:#0b3c52;
 }

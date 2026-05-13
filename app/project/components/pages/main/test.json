@@ -16,7 +16,7 @@
           "title": "欢迎",
           "icon": "fas fa-microchip",
           "columns": 2,
-          "widthRatio": "3",
+          "widthRatio": "2",
           "controls": [
             { "type": "ch5-button", "label": "刷新状态",  "icon": "fas fa-address-book", "join": "refreshStatus" },
             { "type": "ch5-button", "label": "系统设置",  "icon": "fas fa-cogs", "join": "systemSettings" },
