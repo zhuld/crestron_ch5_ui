@@ -16,7 +16,6 @@
           "title": "欢迎",
           "icon": "fas fa-microchip",
           "columns": 2,
-          "controlHeight": "100px",
           "widthRatio": "3",
           "controls": [
             { "type": "ch5-button", "label": "刷新状态",  "icon": "fas fa-address-book", "join": "refreshStatus" },
@@ -37,6 +36,15 @@
             { "type": "label", "label": "当前用户: Admin", "icon": "fas fa-user" },
             { "type": "label", "label": "版本号: 202605", "icon": "fas fa-info-circle" },
             { "type": "label", "label": "配置文件: test.json" , "icon": "fas fa-cogs"}
+          ]
+        },
+        {
+          "title": "音量调节",
+          "icon": "fas fa-speak-up",
+          "columns":1,
+          "widthRatio" :"1",
+          "controls": [
+            {"type": "volume", "label" : "无线麦克风","join": "micVolume"}
           ]
         }
       ]

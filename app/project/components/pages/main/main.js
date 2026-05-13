@@ -127,6 +127,11 @@ const mainModule = (() => {
     wrapper.appendChild(btn);
   }
 
+  // 创建音量调节器
+  function createVolumeControl(control, wrapper){
+    //
+  }
+
   // 文本控件构建函数
   function createLabelControl(control, wrapper) {
     const text = document.createElement('div');
@@ -179,6 +184,7 @@ const mainModule = (() => {
         switch (control.type) {
           case 'label': createLabelControl(control, item); break;
           case 'ch5-button': createCh5ButtonControl(control, item); break;
+          case 'volume': createVolumeControl(control, item); break;
           default: item.textContent = `未知控件 ${control.type},检查配置文件`;
         }
         grid.appendChild(item);
