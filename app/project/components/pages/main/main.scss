@@ -144,10 +144,8 @@ body.dark-theme {
 
 /* ========== 主面板 - 科技容器 ========== */
 .control-panel {
-  width: 100vw;
-  max-width: 1200px;
-  height: 90vh;
-  max-height: 800px;
+  width: 95vw;  
+  height: 92vh;
   background: var(--bg-secondary);
   backdrop-filter: var(--backdrop-blur);
   -webkit-backdrop-filter: var(--backdrop-blur);

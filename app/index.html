@@ -16,12 +16,13 @@
   <link rel="icon" type="image/x-icon" id="favicon" />
   <link rel="stylesheet" id="shellTemplateSelectedThemeCss">
   <link rel="stylesheet" id="externalCss">
+  <link rel="styleshhet" href="main.css">
   <% for (var css in htmlWebpackPlugin.files.css) { %>
-  <link rel="stylesheet" href="./<%= htmlWebpackPlugin.files.css[css] %>">
-  <% } %>
+    <link rel="stylesheet" href="./<%= htmlWebpackPlugin.files.css[css] %>">
+    <% } %>
 
 </head>
-					
+
 <body>
   <div id="widgets-and-standalone-pages">
   </div>
@@ -29,12 +30,20 @@
     url="./app/template/components/pages/template-page/template-page.html">
   </ch5-import-htmlsnippet>
 
-  Loader
-  <div id="loader" class="loader"></div>
+  <div id="loader" class="loader">
+    <div style="color: #878787; 
+        font-size: 2rem; 
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 6rem;">页面加载中...</div>
+  </div>
 
   <% for (var js in htmlWebpackPlugin.files.js) { %>
-  <script src="<%= htmlWebpackPlugin.files.js[js] %>"></script>
-  <% } %>
+    <script src="<%= htmlWebpackPlugin.files.js[js] %>"></script>
+    <% } %>
 </body>
 
 </html>
