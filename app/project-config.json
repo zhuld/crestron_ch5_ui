@@ -1,0 +1,88 @@
+{
+  "projectName": "biamp_ui",
+  "projectType": "shell-template",
+  "version": "0.0.1",
+  "faviconPath": "favicon.ico",
+  "menuOrientation": "none",
+  "selectedTheme": "light-theme",
+  "useWebXPanel": true,
+  "forceDeviceXPanel": false,
+  "themes": [
+    {
+      "name": "light-theme",
+      "brandLogo": {
+        "url": "./app/template/assets/img/ch5-logo-light.svg",
+        "alt": "Crestron Logo",
+        "receiveStateUrl": ""
+      }
+    },
+    {
+      "name": "dark-theme",
+      "brandLogo": {
+        "url": "./app/template/assets/img/ch5-logo-dark.svg",
+        "alt": "Crestron Logo",
+        "receiveStateUrl": ""
+      }
+    }
+  ],
+  "config": {
+    "controlSystem": {
+      
+    }
+  },
+  "customSignals": {
+    "receiveStateTheme": "templateTheme",
+    "sendEventTheme": "templateTheme",
+    "receiveStateLanguage": "templateLanguage",
+    "sendEventLanguage": "templateLanguage"
+  },
+  "header": {
+    "display": false,
+    "displayInfo": true,
+    "displayTheme": true,
+    "diagnostics": {
+      "logs": {
+        "logAfterProjectLoad": true,
+        "receiveStateLogDiagnostics": "",
+        "logDiagnostics": "none"
+      }
+    },
+    "$component": ""
+  },
+  "footer": {
+    "display": false,
+    "$component": ""
+  },
+  "content": {
+    "$defaultView": "main",
+    "triggerViewProperties": {
+      "gestureable": false,
+      "disableAnimation": true
+    },
+    "pages": [
+      {
+        "pageName": "main",
+        "fullPath": "./app/project/components/pages/main/",
+        "fileName": "main.html",
+        "preloadPage": true,
+        "cachePage": false,
+        "standAloneView": false,
+        "navigation": {
+          "sequence": 3,
+          "label": "main",
+          "isI18nLabel": false,
+          "iconClass": "",
+          "iconUrl": "",
+          "iconPosition": ""
+        },
+        "animation": {
+          "transitionIn": "",
+          "transitionOut": "",
+          "transitionDuration": "1s",
+          "transitionDelay": "0s"
+        }
+      }
+    ],
+    "widgets": []
+  }
+}

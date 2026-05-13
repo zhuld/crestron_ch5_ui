@@ -1,0 +1,18 @@
+{
+  "cues": [
+
+    {
+      "type": "b",
+      "event": "refreshStatus",
+      "trigger": true,
+      "actions": [
+        {
+          "type": "b",
+          "state": "systemSettings_Fb",
+          "logic": "toggle"
+        }
+      ]
+    }
+  ],
+  "onStart": []
+}

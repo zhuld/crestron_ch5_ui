@@ -1,0 +1,19 @@
+{
+    "npm.packageManager": "npm",
+    "workbench.colorCustomizations": {},
+    "html.validate.scripts": false,
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "*-emulator.json"
+            ],
+            "url": "./.vscode/emulator-schema.json"
+        },
+        {
+            "fileMatch": [
+                "project-config.json"
+            ],
+            "url": "./.vscode/project-config-schema.json"
+        }
+    ]
+}

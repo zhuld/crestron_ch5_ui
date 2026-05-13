@@ -1,0 +1,143 @@
+{
+  "appTitle": {
+      "icon":"fas fa-address-book",
+      "text": "智能控制面板",
+      "version": "202605"
+  },
+  
+  "pages": [
+    
+    {
+      "id": "home",
+      "name": "主页",
+      "icon": "fas fa-home",
+      "sections": [
+        {
+          "title": "欢迎",
+          "icon": "fas fa-microchip",
+          "columns": 2,
+          "controlHeight": "100px",
+          "widthRatio": "3",
+          "controls": [
+            { "type": "ch5-button", "label": "刷新状态",  "icon": "fas fa-address-book", "join": "refreshStatus", "joinFeedback": "refreshStatus" },
+            { "type": "ch5-button", "label": "系统设置",  "icon": "fas fa-cogs", "join": "systemSettings", "joinFeedback": "systemSettings" },
+            { "type": "ch5-button", "label": "用户管理",  "icon": "fas fa-users", "join": "userManagement", "joinFeedback": "userManagement" },
+            { "type": "ch5-button", "label": "日志查看",  "icon": "fas fa-file-alt", "join": "viewLogs", "joinFeedback": "viewLogs" },
+            { "type": "ch5-button", "label": "设备诊断",  "icon": "fas fa-stethoscope", "join": "deviceDiagnostics", "joinFeedback": "deviceDiagnostics" },
+            { "type": "ch5-button", "label": "帮助中心",  "icon": "fas fa-question-circle", "join": "helpCenter", "joinFeedback": "helpCenter" }
+          ]
+        },
+        {
+          "title": "系统信息",
+          "icon": "fas fa-info-circle",
+          "columns": 1,
+          "widthRatio": "2",
+          "controls": [
+            { "type": "label", "label": "系统状态: 正常", "icon": "fas fa-check-circle" },
+            { "type": "label", "label": "当前用户: Admin", "icon": "fas fa-user" },
+            { "type": "label", "label": "版本号: 202605", "icon": "fas fa-info-circle" },
+            { "type": "label", "label": "配置文件: config.json" , "icon": "fas fa-cogs"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "system",
+      "name": "系统开关",
+      "icon": "fas fa-power-off",
+      "sections": [
+        {
+          "title": "主电源",
+          "icon": "fas fa-plug",
+          "controls": [
+            { "type": "toggleButton", "label": "总电源", "state": false, "action": "masterPower", "icon": "fas fa-power-off" },
+            { "type": "toggleButton", "label": "备用电源", "state": true, "action": "upsPower", "icon": "fas fa-battery-full" },
+            { "type": "ch5-button", "label": "紧急断电", "action": "emergencyShutdown", "icon": "fas fa-exclamation-triangle" }
+          ]
+        },
+        {
+          "title": "外设控制",
+          "icon": "fas fa-cogs",
+          "controls": [
+            { "type": "toggleButton", "label": "显示器", "state": true, "action": "monitor", "icon": "fas fa-desktop" },
+            { "type": "toggleButton", "label": "投影仪", "state": false, "action": "projector", "icon": "fas fa-phote" },
+            { "type": "ch5-button", "label": "重启系统", "action": "reboot", "icon": "fas fa-sync-alt" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "name": "视频切换",
+      "icon": "fas fa-camera",
+      "sections": [
+        {
+          "title": "输入源",
+          "icon": "📡",
+          "controls": [
+            { "type": "select", "label": "当前源", "options": ["HDMI 1", "HDMI 2", "VGA", "DisplayPort", "USB-C"], "selected": "HDMI 1", "action": "videoSource", "icon": "📺" },
+            { "type": "ch5-button", "label": "自动检测", "action": "autoDetect", "icon": "fas fa-check-circle" }
+          ]
+        },
+        {
+          "title": "画质模式",
+          "icon": "🎚️",
+          "controls": [
+            { "type": "toggleButton", "label": "HDR", "state": true, "action": "hdr", "icon": "fas fa-" },
+            { "type": "toggleButton", "label": "低延迟", "state": false, "action": "lowLatency", "icon": "⚡" },
+            { "type": "ch5-button", "label": "重置", "action": "resetVideo", "icon": "🔃" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "audio",
+      "name": "音量调节",
+      "icon": "fas fa-volume-up",
+      "sections": [
+        {
+          "title": "主输出",
+          "icon": "🔈",
+          "controls": [
+            { "type": "slider", "label": "总音量", "value": 75, "min": 0, "max": 100, "action": "masterVolume", "icon": "🔊" },
+            { "type": "toggleButton", "label": "静音", "state": false, "action": "mute", "icon": "🔇" }
+          ]
+        },
+        {
+          "title": "通道均衡",
+          "icon": "🎛️",
+          "controls": [
+            { "type": "slider", "label": "低音", "value": 60, "min": -20, "max": 20, "action": "bass", "icon": "🎵" },
+            { "type": "slider", "label": "高音", "value": 40, "min": -20, "max": 20, "action": "treble", "icon": "🎧" },
+            { "type": "select", "label": "预设", "options": ["平坦", "摇滚", "流行", "古典", "人声"], "selected": "平坦", "action": "eqPreset", "icon": "📋" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lighting",
+      "name": "灯光控制",
+      "icon": "fas fa-bolt",
+      "sections": [
+        {
+          "title": "主照明",
+          "icon": "💡",
+          "controls": [
+            { "type": "slider", "label": "亮度", "value": 80, "min": 10, "max": 100, "action": "brightness", "icon": "☀️" },
+            { "type": "toggleButton", "label": "全亮", "state": false, "action": "fullLight", "icon": "💥" },
+            { "type": "colorPicker", "label": "色温", "value": "#ffddb0", "action": "colorTemp", "icon": "🎨" }
+          ]
+        },
+        {
+          "title": "氛围灯",
+          "icon": "✨",
+          "controls": [
+            { "type": "toggleButton", "label": "灯带", "state": true, "action": "ledStrip", "icon": "〰️" },
+            { "type": "slider", "label": "饱和度", "value": 70, "min": 0, "max": 100, "action": "saturation", "icon": "💧" },
+            { "type": "ch5-button", "label": "情景模式", "action": "sceneMode", "icon": "🎬" }
+          ]
+        }
+      ]
+    }
+  ]
+}
