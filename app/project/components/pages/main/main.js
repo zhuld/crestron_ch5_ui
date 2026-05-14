@@ -118,9 +118,9 @@ const mainModule = (() => {
     btn.stretch = 'both';
     //btn.height = '200px';
 
-    btn.sendEventOnClick = control.join ? control.join  : '';
+    btn.sendEventOnClick = control.join ? control.join : '';
     btn.receiveStateSelected = control.join ? control.join + "_Fb" : '';
-    btn.receiveStateEnable = control.enable || '';
+    //btn.receiveStateEnable = control.join ? control.join + "_Enable" : '';
 
     btn.addEventListener('click', (e) => {
       showNotification(`执行: ${control.join || 'no-action'}`);
@@ -128,10 +128,86 @@ const mainModule = (() => {
     wrapper.appendChild(btn);
   }
 
-  // 创建音量调节器
-  function createVolumeControl(control, wrapper){
-    //
+  // 创建音量控件
+  function createVolumeControl(control, wrapper) {
+    const join = control.join || '';
+    const label = document.createElement('div');
+    label.className = 'volume-label';
+    label.innerHTML = `${escapeHtml(control.label)}`;
+
+    const twoColumns = document.createElement('div');
+    twoColumns.className = 'dual-columns';
+
+    const columnSlider = document.createElement('div');
+    columnSlider.className = 'volume-slider';
+
+    const slider = document.createElement('ch5-slider');
+    slider.orientation = 'vertical';
+    slider.stretch = 'both';
+    slider.min = '-40';
+    slider.max = '10';
+    slider.step = '1';
+    slider.ticks = '{"0":"-40", "20":"-30", "40":"-20", "60":"-10", "80": "0", "100" : "10" }';
+    slider.showTickValues = true;
+    slider.tapSettable = true;
+    slider.handleSize = "large";
+
+    columnSlider.appendChild(slider);
+
+    const columnButtons = document.createElement('div');
+    columnButtons.className = 'volume-buttons';
+
+    const btnPlus = makeCh5Button('', 'fas fa-plus', join + '_plus', join + '_enable')
+    const btnMinus = makeCh5Button('', 'fas fa-minus', join + '_minus', join + '_enable')
+    const btnMute = makeCh5Button('', 'fas fa-volume-up', join + '_mute', join + '_enable')
+    const value = document.createElement('div');
+    value.className = 'volume-value';
+    value.innerHTML = '0';
+    value.id = 'volume-value';
+
+    columnButtons.appendChild(value);
+    columnButtons.appendChild(btnPlus);
+    columnButtons.appendChild(btnMinus);
+    columnButtons.appendChild(btnMute);
+
+    twoColumns.appendChild(columnSlider);
+    twoColumns.appendChild(columnButtons);
+
+    slider.addEventListener('slider', (e) => {
+      value.innerHTML = `${Math.floor(e.detail.value)}`;
+    });
+    slider.sendEventOnChange = join + '_Slider';
+    slider.receiveStateValue = join + '_Slider_Fb';
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(twoColumns);
   }
+
+  //make ch5 button
+  function makeCh5Button(label, icon, join, enable) {
+    const btn = document.createElement('ch5-button');
+
+    // 创建ch5-button-label元素并设置内容
+    const btnLabel = document.createElement('ch5-button-label');
+
+    // 设置内部HTML内容
+    btnLabel.innerHTML = `${renderIcon(icon)}  ${escapeHtml(label)} `;
+    btnLabel.innerHTML = '<div class="ch5-button-custom-label">' + btnLabel.innerHTML + '</div>';
+    btnLabel.innerHTML = '<template>' + btnLabel.innerHTML + '</template>';
+    btn.appendChild(btnLabel);
+
+    btn.stretch = 'both';
+
+    btn.sendEventOnClick = join ? join : '';
+    btn.receiveStateSelected = join ? join + "_Fb" : '';
+    //btn.receiveStateEnable = enable || '';
+
+    btn.addEventListener('click', (e) => {
+      showNotification(`执行: ${join || 'no-action'}`);
+    });
+    return btn;
+  }
+
 
   // 文本控件构建函数
   function createLabelControl(control, wrapper) {
@@ -185,8 +261,9 @@ const mainModule = (() => {
         //item.style.height = section.controlHeight || 'auto';
         switch (control.type) {
           case 'label': createLabelControl(control, item); break;
-          case 'ch5-button': createCh5ButtonControl(control, item); break;s
+          case 'ch5-button': createCh5ButtonControl(control, item); break;
           case 'volume': createVolumeControl(control, item); break;
+          case 'widget': createWidgetControl(control, item); break;
           default: item.textContent = `未知控件 ${control.type},检查配置文件`;
         }
         grid.appendChild(item);

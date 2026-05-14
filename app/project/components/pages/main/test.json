@@ -1,12 +1,10 @@
 {
   "appTitle": {
-      "icon":"fas fa-address-book",
-      "text": "智能控制面板测试",
-      "version": "202605"
+    "icon": "fas fa-address-book",
+    "text": "智能控制面板测试",
+    "version": "202605"
   },
-  
   "pages": [
-    
     {
       "id": "home",
       "name": "主页",
@@ -16,37 +14,101 @@
           "title": "欢迎",
           "icon": "fas fa-microchip",
           "columns": 2,
-          "rows":3,
+          "rows": 3,
           "widthRatio": "2",
           "controls": [
-            { "type": "ch5-button", "label": "刷新状态",  "icon": "fas fa-address-book", "join": "refreshStatus" },
-            { "type": "ch5-button", "label": "系统设置",  "icon": "fas fa-cogs", "join": "systemSettings" },
-            { "type": "ch5-button", "label": "用户管理",  "icon": "fas fa-users", "join": "userManagement" ,"enable": "systemSettings_Fb"},
-            { "type": "ch5-button", "label": "日志查看",  "icon": "fas fa-file-alt", "join": "viewLogs" },
-            { "type": "ch5-button", "label": "设备诊断",  "icon": "fas fa-stethoscope", "join": "deviceDiagnostics" },
-            { "type": "ch5-button", "label": "帮助中心",  "icon": "fas fa-question-circle", "join": "helpCenter" }
-          ]
-        },
-        {
-          "title": "系统信息",
-          "icon": "fas fa-info-circle",
-          "columns": 1,
-          "rows":4,
-          "widthRatio": "1",
-          "controls": [
-            { "type": "label", "label": "系统状态: 正常", "icon": "fas fa-check-circle" },
-            { "type": "label", "label": "当前用户: Admin", "icon": "fas fa-user" },
-            { "type": "label", "label": "版本号: 202605", "icon": "fas fa-info-circle" },
-            { "type": "label", "label": "配置文件: test.json" , "icon": "fas fa-cogs"}
+            {
+              "type": "ch5-button",
+              "label": "刷新状态",
+              "icon": "fas fa-address-book",
+              "join": "refreshStatus"
+            },
+            {
+              "type": "ch5-button",
+              "label": "系统设置",
+              "icon": "fas fa-cogs",
+              "join": "systemSettings"
+            },
+            {
+              "type": "ch5-button",
+              "label": "用户管理",
+              "icon": "fas fa-users",
+              "join": "userManagement",
+              "enable": "systemSettings_Fb"
+            },
+            {
+              "type": "ch5-button",
+              "label": "日志查看",
+              "icon": "fas fa-file-alt",
+              "join": "viewLogs"
+            },
+            {
+              "type": "ch5-button",
+              "label": "设备诊断",
+              "icon": "fas fa-stethoscope",
+              "join": "deviceDiagnostics"
+            },
+            {
+              "type": "ch5-button",
+              "label": "帮助中心",
+              "icon": "fas fa-question-circle",
+              "join": "helpCenter"
+            }
           ]
         },
         {
           "title": "音量调节",
           "icon": "fas fa-speak-up",
-          "columns":1,
-          "widthRatio" :"1",
+          "columns": 2,
+          "rows": 1,
+          "widthRatio": "2",
           "controls": [
-            {"type": "volume", "label" : "无线麦克风","join": "mic1Volume"}
+            {
+              "type": "volume",
+              "label": "无线麦克风",
+              "join": "mic1Volume"
+            },
+            {
+              "type": "volume",
+              "label": "有线麦克风",
+              "join": "mic2Volume"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "info",
+      "name": "信息",
+      "icon": "fas fa-home",
+      "sections": [
+        {
+          "title": "系统信息",
+          "icon": "fas fa-info-circle",
+          "columns": 1,
+          "rows": 4,
+          "widthRatio": "1",
+          "controls": [
+            {
+              "type": "label",
+              "label": "系统状态: 正常",
+              "icon": "fas fa-check-circle"
+            },
+            {
+              "type": "label",
+              "label": "当前用户: Admin",
+              "icon": "fas fa-user"
+            },
+            {
+              "type": "label",
+              "label": "版本号: 202605",
+              "icon": "fas fa-info-circle"
+            },
+            {
+              "type": "label",
+              "label": "配置文件: test.json",
+              "icon": "fas fa-cogs"
+            }
           ]
         }
       ]

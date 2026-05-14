@@ -45,7 +45,10 @@
   --ch5-button-background-active: linear-gradient(115deg, #cde5ff, #b7d4fc);
   --ch5-button-bg-active-after: #ffffff;
   --ch5-button-box-shadow-active-after: 0 0 16px #66f0ff, 0 0 28px #00b3ff;
-  --ch5-button-lable: #1a749e;
+  --ch5-button-label: #1a749e;
+  --ch5-slider-handle-bg: repeating-linear-gradient(0, #C5E6FB 0px, #C5E6FB 2px, #DCEDFF 2px, #DCEDFF 8px);
+  --ch5-slider-handle-border: #0091EA;
+  --ch5-slider-bg: #C5E6FB;
 }
 
 body.dark-theme {
@@ -88,7 +91,10 @@ body.dark-theme {
   --ch5-button-background-active: linear-gradient(115deg, #101836, #0a1436);
   --ch5-button-bg-active-after: #dcf5ff;
   --ch5-button-box-shadow-active-after: 0 0 16px #6af0ff, 0 0 28px #00c3ff;
-  --ch5-button-lable: #2b9fd5;
+  --ch5-button-label: #2b9fd5;
+  --ch5-slider-handle-bg: repeating-linear-gradient(0, #0C2436 0px, #0C2436 2px, #0E1425 2px, #0E1425 8px);
+  --ch5-slider-handle-border: #0099ff;
+  --ch5-slider-bg: #0C2436;
 }
 
 /* ========== 基础重置 ========== */
@@ -313,7 +319,7 @@ body.dark-theme {
   background: var(--card-bg);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  padding: 1.3rem;
+  padding: 1.3rem 1.3rem 0 1.3rem;
   border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
@@ -324,7 +330,6 @@ body.dark-theme {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  overflow: hidden;
 }
 
 .section:hover {
@@ -379,24 +384,23 @@ body.dark-theme {
   display: grid;
   align-content: start;
   width: 100%;
-  gap: 16px;
+  //gap: 10px;
   overflow: auto;
-  padding-bottom: 20px;
+  padding-bottom: 1.3rem;
   height: 100%;
 }
 
 /* ========== 控件项 - 为滑块特殊处理 ========== */
 .control-item {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  justify-content: center;
   background: rgba(128, 128, 128, 0.04);
-  padding: 0.5rem 0.9rem;
-  border-radius: 6px;
+  padding: 20px;
+  border-radius: 10px;
   backdrop-filter: blur(6px);
   border: 1px solid transparent;
   transition: all 0.25s ease;
+  overflow: hidden;
 }
 
 /* ch5-button 样式 */
@@ -405,7 +409,7 @@ body.dark-theme {
   background: var(--ch5-button-bg);
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  //cursor: pointer;
   transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.1s;
   box-shadow: var(--ch5-button-box-shadow);
   backdrop-filter: blur(2px);
@@ -427,7 +431,7 @@ body.dark-theme {
   content: '';
   position: absolute;
   top: 12px;
-  right: 18px;
+  right: 12px;
   width: 9px;
   height: 9px;
   background: var(--ch5-button-bg-after);
@@ -458,7 +462,6 @@ body.dark-theme {
   background: var(--ch5-button-bg-active-after);
   box-shadow: var(--ch5-button-box-shadow-active-after);
   transform: scale(1.25);
-  opacity: 1;
 }
 
 @keyframes touchPulse {
@@ -478,10 +481,10 @@ body.dark-theme {
 .control-item .ch5-button-custom-label {
   align-items: center;
   justify-content: center;
-  margin: 1rem;
+  //margin: 1rem;
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--ch5-button-lable);
+  color: var(--ch5-button-label);
   display: flex;
   gap: 0.5rem;
   align-items: baseline;
@@ -501,68 +504,7 @@ body.dark-theme {
   text-wrap: nowrap;
 }
 
-/* ========== 滑块容器 - 让滑块撑满 ========== */
-.slider-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-  min-width: 0;
-}
 
-.slider-label {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-size: 0.85rem;
-}
-
-/* ========== 滑块 - 撑满可用空间 ========== */
-input[type="range"] {
-  flex: 1;
-  min-width: 80px;
-  width: 100%;
-  height: 6px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: var(--slider-track);
-  border-radius: 10px;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: var(--accent-color);
-  border-radius: 50%;
-  box-shadow: 0 0 15px var(--accent-glow-strong);
-  border: 2px solid #fff;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 25px var(--accent-glow-strong);
-}
-
-/* ========== 数值显示 ========== */
-.slider-value {
-  min-width: 45px;
-  text-align: right;
-  font-weight: 700;
-  color: var(--accent-color);
-  text-shadow: 0 0 8px var(--accent-glow);
-  font-family: 'Orbitron', monospace;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
 
 /* ========== 底部标签导航 - 全新科技感设计 ========== */
 .bottom-tabs {
@@ -761,7 +703,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   align-items: center;
   padding-top: 6rem;
   color: #2c2c2c;
-  background-image: linear-gradient(to right, #2a2a2c,#86868c,#c0c0c9, #86868c, #2a2a2c);
+  background-image: linear-gradient(to right, #2a2a2c, #86868c, #c0c0c9, #86868c, #2a2a2c);
   background-size: 200% auto;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -772,4 +714,61 @@ input[type="range"]::-webkit-slider-thumb:hover {
   to {
     background-position: -200% center;
   }
+}
+
+//volume bar
+.control-item .volume-label,
+.volume-value {
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--ch5-button-label);
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  text-wrap: nowrap;
+}
+
+.control-item .dual-columns {
+  display: flex;
+  flex-wrap: nowrap;
+  /* 确保并排，不换行，严格并列 */
+  width: 100%;
+  height: 100%;
+}
+
+.control-item .volume-slider {
+  width: 60%;
+}
+
+.control-item .volume-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  flex: 1;
+  flex-direction: column;
+  padding: 50px 5px 30px 5px;
+}
+
+/* ========== 滑块容器 - 让滑块撑满 ========== */
+.ch5-slider {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  /* 滑块轨道背景：深色半透明，带微边框 */
+  --ch5-slider--target-background-color: var(--ch5-button-bg);
+  --ch5-slider--target-border-color: var(--ch5-slider-handle-border);
+
+
+  /* 滑块已选中的连接部分：霓虹蓝渐变 */
+  --ch5-slider--connect-background-color: var(--ch5-slider-bg);
+  --ch5-slider--connect-border-color: var(--ch5-slider-handle-border);
+
+
+  /* 滑块手柄：圆润、发光、带内阴影 */
+  --ch5-slider--handle-background-color: var(--ch5-slider-handle-bg);
+  --ch5-slider--handle-border-color: var(--ch5-slider-handle-border);
+
 }
