@@ -30,7 +30,7 @@
           "title": "系统信息",
           "icon": "fas fa-info-circle",
           "columns": 1,
-          "widthRatio": "2",
+          "widthRatio": "1",
           "controls": [
             { "type": "label", "label": "系统状态: 正常", "icon": "fas fa-check-circle" },
             { "type": "label", "label": "当前用户: Admin", "icon": "fas fa-user" },
@@ -42,9 +42,9 @@
           "title": "音量调节",
           "icon": "fas fa-speak-up",
           "columns":1,
-          "widthRatio" :"1",
+          "widthRatio" :"2",
           "controls": [
-            {"type": "volume", "label" : "无线麦克风","join": "micVolume"}
+            {"type": "volume", "label" : "无线麦克风","join": "mic1Volume"}
           ]
         }
       ]
