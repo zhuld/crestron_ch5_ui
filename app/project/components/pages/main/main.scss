@@ -45,7 +45,7 @@
   --ch5-button-background-active: linear-gradient(115deg, #cde5ff, #b7d4fc);
   --ch5-button-bg-active-after: #ffffff;
   --ch5-button-box-shadow-active-after: 0 0 16px #66f0ff, 0 0 28px #00b3ff;
-  --ch5-button-lable: #124f6c;
+  --ch5-button-lable: #1a749e;
 }
 
 body.dark-theme {
@@ -88,7 +88,7 @@ body.dark-theme {
   --ch5-button-background-active: linear-gradient(115deg, #101836, #0a1436);
   --ch5-button-bg-active-after: #dcf5ff;
   --ch5-button-box-shadow-active-after: 0 0 16px #6af0ff, 0 0 28px #00c3ff;
-  --ch5-button-lable: #207da8;
+  --ch5-button-lable: #2b9fd5;
 }
 
 /* ========== 基础重置 ========== */
@@ -317,7 +317,7 @@ body.dark-theme {
   border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  min-width: 240px;
+  min-width: 200px;
   flex-basis: 0;
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
@@ -377,11 +377,12 @@ body.dark-theme {
 /* ========== 控件网格 ========== */
 .controls-grid {
   display: grid;
-  justify-content: space-around;
   align-content: start;
   width: 100%;
   gap: 16px;
   overflow: auto;
+  padding-bottom: 20px;
+  height: 100%;
 }
 
 /* ========== 控件项 - 为滑块特殊处理 ========== */
@@ -392,23 +393,10 @@ body.dark-theme {
   gap: 0.5rem;
   background: rgba(128, 128, 128, 0.04);
   padding: 0.5rem 0.9rem;
-  border-radius: 16px;
+  border-radius: 6px;
   backdrop-filter: blur(6px);
   border: 1px solid transparent;
   transition: all 0.25s ease;
-}
-
-
-/* 包含滑块的控件项特殊样式 */
-.control-item:has(input[type="range"]) {
-  flex-wrap: wrap;
-  padding: 0.6rem 0.9rem;
-}
-
-.control-item:hover {
-  border-color: var(--border-color);
-  background: rgba(0, 200, 255, 0.05);
-  box-shadow: 0 0 15px rgba(0, 200, 255, 0.1);
 }
 
 /* ch5-button 样式 */

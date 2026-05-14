@@ -116,6 +116,7 @@ const mainModule = (() => {
     btn.appendChild(btnLabel);
 
     btn.stretch = 'both';
+    //btn.height = '200px';
 
     btn.sendEventOnClick = control.join ? control.join  : '';
     btn.receiveStateSelected = control.join ? control.join + "_Fb" : '';
@@ -176,14 +177,15 @@ const mainModule = (() => {
       const grid = document.createElement('div');
       grid.className = 'controls-grid';
       grid.style.gridTemplateColumns = `repeat(${section.columns || 1}, 1fr)`;
+      grid.style.gridTemplateRows = `repeat(${section.rows || 1}, 1fr)`;
 
       section.controls.forEach(control => {
         const item = document.createElement('div');
         item.className = 'control-item';
-        item.style.height = section.controlHeight || 'auto';
+        //item.style.height = section.controlHeight || 'auto';
         switch (control.type) {
           case 'label': createLabelControl(control, item); break;
-          case 'ch5-button': createCh5ButtonControl(control, item); break;
+          case 'ch5-button': createCh5ButtonControl(control, item); break;s
           case 'volume': createVolumeControl(control, item); break;
           default: item.textContent = `未知控件 ${control.type},检查配置文件`;
         }

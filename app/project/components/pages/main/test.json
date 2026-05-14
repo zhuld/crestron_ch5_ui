@@ -16,6 +16,7 @@
           "title": "欢迎",
           "icon": "fas fa-microchip",
           "columns": 2,
+          "rows":3,
           "widthRatio": "2",
           "controls": [
             { "type": "ch5-button", "label": "刷新状态",  "icon": "fas fa-address-book", "join": "refreshStatus" },
@@ -30,6 +31,7 @@
           "title": "系统信息",
           "icon": "fas fa-info-circle",
           "columns": 1,
+          "rows":4,
           "widthRatio": "1",
           "controls": [
             { "type": "label", "label": "系统状态: 正常", "icon": "fas fa-check-circle" },
@@ -42,7 +44,7 @@
           "title": "音量调节",
           "icon": "fas fa-speak-up",
           "columns":1,
-          "widthRatio" :"2",
+          "widthRatio" :"1",
           "controls": [
             {"type": "volume", "label" : "无线麦克风","join": "mic1Volume"}
           ]
