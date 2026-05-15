@@ -78,6 +78,77 @@
       ]
     },
     {
+      "id": "video",
+      "name": "视频",
+      "icon": "fas fa-home",
+      "sections": [
+        {
+          "title": "视频切换",
+          "screencolumns": "2",
+          "columns": 1,
+          "rows": 1,
+          "widthRatio": "3",
+          "controls": [
+            {
+              "type": "videoswitch",
+              "join": "videoSwitch",
+              "sources":[
+                {
+                  "icon": "fas fa-video",
+                  "label": "地插"
+                },
+                {
+                  "icon": "fas fa-stethoscope",
+                  "label": "电脑"
+                },
+                {
+                  "icon": "fas fa-film",
+                  "label": "播放器"
+                },
+                {
+                  "icon": "fas fa-camera",
+                  "label": "摄像头1"
+                },
+                {
+                  "icon": "fas fa-camera",
+                  "label": "摄像头2"
+                }
+              ],
+              "screens":[
+                {
+                  "label": "LED屏幕"
+                },
+                {
+                  "label": "返看"
+                },
+                {
+                  "label": "投影机"
+                },
+                {
+                  "label": "返看"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "摄像头",
+          "icon": "fas fa-info-circle",
+          "columns": 1,
+          "rows": 1,
+          "widthRatio": "1",
+          "controls": [
+            {
+              "type": "dpad",
+              "label": "系统状态: 正常",
+              "icon": "fas fa-check-circle",
+              "join": "Dpad"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "info",
       "name": "信息",
       "icon": "fas fa-home",
@@ -108,21 +179,6 @@
               "type": "label",
               "label": "配置文件: test.json",
               "icon": "fas fa-cogs"
-            }
-          ]
-        },
-        {
-          "title": "摄像头",
-          "icon": "fas fa-info-circle",
-          "columns": 1,
-          "rows": 1,
-          "widthRatio": "1",
-          "controls": [
-            {
-              "type": "dpad",
-              "label": "系统状态: 正常",
-              "icon": "fas fa-check-circle",
-              "join": "Dpad"
             }
           ]
         }

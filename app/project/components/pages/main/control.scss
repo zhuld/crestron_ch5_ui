@@ -9,6 +9,8 @@
     border: 1px solid transparent;
     transition: all 0.25s ease;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ch5-button 样式 */
@@ -125,6 +127,7 @@
     gap: 0.5rem;
     align-items: baseline;
     text-wrap: nowrap;
+    width: 100%;
 }
 
 .control-item .dual-columns {
@@ -136,16 +139,17 @@
 }
 
 .control-item .volume-slider {
-    width: 60%;
+    width: 70%;
+    display: grid;    
 }
 
 .control-item .volume-buttons {
+    width: 30%;
     display: flex;
-    gap: 20px;
+    gap: 8%;
     flex-wrap: nowrap;
-    flex: 1;
     flex-direction: column;
-    padding: 10px 5px 30px 5px;
+    padding: 10px 5px;
 }
 
 /* ========== 滑块容器 - 让滑块撑满 ========== */
@@ -171,12 +175,14 @@
 
 .dpad-item {
     height: 75%;
+    width: 100%;
     place-items: center;
     display: grid;
 }
 
 .dpad-buttons {
     height: 25%;
+    width: 100%;
     display: grid;
     grid-template-columns: auto auto;
     place-items: center;
@@ -189,4 +195,11 @@
     --ch5-dpad--default-pressed-background-color: var(--ch5-button-label);
     --ch5-dpad--default-color: var(--ch5-button-label);
 
+}
+
+/* video switcher */
+.ch5-video-switcher{
+    height: 100%;
+    //display: grid;
+    //place-items: center;
 }

@@ -214,21 +214,53 @@ const mainModule = (() => {
     dpadContain.className = 'dpad-item';
 
     dpadContain.innerHTML = `<ch5-dpad stretch="height" shape="circle" contractName=${join}></ch5-dpad>`;
-    
-    
+
+
     const btnContain = document.createElement('div');
     btnContain.className = 'dpad-buttons';
 
     const btnPlus = makeCh5Button('', 'fas fa-plus', join + '_plus', join + '_enable');
     const btnMinus = makeCh5Button('', 'fas fa-minus', join + '_minus', join + '_enable');
-    
+
     btnContain.appendChild(btnPlus);
     btnContain.appendChild(btnMinus);
-    
+
     wrapper.appendChild(dpadContain);
     wrapper.appendChild(btnContain);
   }
 
+  // 视频切换控件
+
+  function createVideoControl(control, wrapper) {
+    const videoSwitch = document.createElement('ch5-video-switcher');
+    //videoSwitch.numberofscreencolumns = 2;
+    videoSwitch.contractName = control.join || '';
+    //videoSwitch.setAttribute('sourcelistposition','left');
+    if (control.sources) {
+      control.sources.forEach(source => {
+          const sourceElement = document.createElement('ch5-video-switcher-source');
+          sourceElement.iconClass = `${source.icon}`;
+          const sourceLabel = document.createElement('ch5-video-switcher-source-label');
+          sourceLabel.innerHTML = `<template>${source.label}</template>`;
+          sourceElement.appendChild(sourceLabel);
+          videoSwitch.appendChild(sourceElement);
+      });
+    }
+    videoSwitch.setAttribute('numberOfSoures',`${control.sources.length}`)
+    if (control.screens) {
+      control.screens.forEach(screen => {
+          const screenElement = document.createElement('ch5-video-switcher-screen');
+          const screenLabel = document.createElement('ch5-video-switcher-screen-label');
+          screenLabel.innerHTML = `<template>${screen.label}</template>`;
+          screenElement.appendChild(screenLabel);
+          videoSwitch.appendChild(screenElement);
+      });
+    }
+    videoSwitch.setAttribute('numberOfScreens',`4`);
+    videoSwitch.setAttribute('numberOfScreenColumns',`2`);
+    
+    wrapper.appendChild(videoSwitch);
+  }
   // 文本控件构建函数
   function createLabelControl(control, wrapper) {
     const text = document.createElement('div');
@@ -284,6 +316,8 @@ const mainModule = (() => {
           case 'ch5-button': createCh5ButtonControl(control, item); break;
           case 'volume': createVolumeControl(control, item); break;
           case 'dpad': createDpadControl(control, item); break;
+          case 'videoswitch': createVideoControl(control, item); break;
+
           default: item.textContent = `未知控件 ${control.type},检查配置文件`;
         }
         grid.appendChild(item);
