@@ -1,0 +1,192 @@
+/* ========== 控件项 - 为滑块特殊处理 ========== */
+.control-item {
+    align-items: center;
+    justify-content: center;
+    background: rgba(128, 128, 128, 0.04);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    overflow: hidden;
+}
+
+/* ch5-button 样式 */
+.control-item .ch5-button {
+    position: relative;
+    background: var(--ch5-button-bg);
+    align-items: center;
+    justify-content: center;
+    //cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.1s;
+    box-shadow: var(--ch5-button-box-shadow);
+    backdrop-filter: blur(2px);
+}
+
+.control-item .ch5-button::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: var(--ch5-button-bg-before);
+    pointer-events: none;
+    border-radius: 5px;
+}
+
+.control-item .ch5-button::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 9px;
+    height: 9px;
+    background: var(--ch5-button-bg-after);
+    box-shadow: var(--ch5-button-box-shadow-after);
+    border-radius: 50%;
+    opacity: 0.9;
+    transition: all 0.1s;
+}
+
+/* 悬浮反馈（桌面效果） */
+.control-item .ch5-button--pressed {
+    transform: scale(0.95);
+    box-shadow: var(--ch5-button-box-shadow-pressed);
+    background: var(--ch5-button-background-pressed);
+}
+
+/* 【核心触摸反馈】使用 scale + 位移 + 光效，确保 iPad/Surface 触摸明显 */
+.control-item .ch5-button--selected {
+    transform: scale(0.95) translateY(2px);
+    transition: transform 0.02s cubic-bezier(0.2, 0.9, 0.4, 1.2), box-shadow 0.05s;
+    box-shadow: var(--ch5-button-box-shadow-active);
+    background: var(--ch5-button-background-active);
+    color: #001e2c;
+    animation: touchPulse 0.12s ease-out;
+}
+
+.control-item .ch5-button--selected::after {
+    background: var(--ch5-button-bg-active-after);
+    box-shadow: var(--ch5-button-box-shadow-active-after);
+    transform: scale(1.25);
+}
+
+@keyframes touchPulse {
+    0% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.2) drop-shadow(0 0 4px cyan);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+.control-item .ch5-button-custom-label {
+    align-items: center;
+    justify-content: center;
+    //margin: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ch5-button-label);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    text-wrap: nowrap;
+}
+
+/* label 样式 */
+.text-control {
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    text-wrap: nowrap;
+}
+
+//volume bar
+.control-item .volume-label,
+.volume-value {
+    align-items: center;
+    justify-content: center;
+    padding: 0.1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ch5-button-label);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    text-wrap: nowrap;
+}
+
+.control-item .dual-columns {
+    display: flex;
+    flex-wrap: nowrap;
+    /* 确保并排，不换行，严格并列 */
+    width: 100%;
+    height: 100%;
+}
+
+.control-item .volume-slider {
+    width: 60%;
+}
+
+.control-item .volume-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    flex: 1;
+    flex-direction: column;
+    padding: 10px 5px 30px 5px;
+}
+
+/* ========== 滑块容器 - 让滑块撑满 ========== */
+.ch5-slider {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    /* 滑块轨道背景：深色半透明，带微边框 */
+    --ch5-slider--target-background-color: var(--ch5-button-bg);
+    --ch5-slider--target-border-color: var(--ch5-slider-handle-border);
+
+
+    /* 滑块已选中的连接部分：霓虹蓝渐变 */
+    --ch5-slider--connect-background-color: var(--ch5-slider-bg);
+    --ch5-slider--connect-border-color: var(--ch5-slider-handle-border);
+
+
+    /* 滑块手柄：圆润、发光、带内阴影 */
+    --ch5-slider--handle-background-color: var(--ch5-slider-handle-bg);
+    --ch5-slider--handle-border-color: var(--ch5-slider-handle-border);
+
+}
+
+.dpad-item {
+    height: 75%;
+    place-items: center;
+    display: grid;
+}
+
+.dpad-buttons {
+    height: 25%;
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
+    gap: 20%;
+    padding: 20px 20% 0px 20%;
+}
+
+.ch5-dpad {
+    --ch5-dpad--default-background-color: var(--ch5-slider-bg);
+    --ch5-dpad--default-pressed-background-color: var(--ch5-button-label);
+    --ch5-dpad--default-color: var(--ch5-button-label);
+
+}

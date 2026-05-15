@@ -207,7 +207,27 @@ const mainModule = (() => {
     });
     return btn;
   }
+  // 创建dpad控件
+  function createDpadControl(control, wrapper) {
+    const join = control.join || '';
+    const dpadContain = document.createElement('div');
+    dpadContain.className = 'dpad-item';
 
+    dpadContain.innerHTML = `<ch5-dpad stretch="height" shape="circle" contractName=${join}></ch5-dpad>`;
+    
+    
+    const btnContain = document.createElement('div');
+    btnContain.className = 'dpad-buttons';
+
+    const btnPlus = makeCh5Button('', 'fas fa-plus', join + '_plus', join + '_enable');
+    const btnMinus = makeCh5Button('', 'fas fa-minus', join + '_minus', join + '_enable');
+    
+    btnContain.appendChild(btnPlus);
+    btnContain.appendChild(btnMinus);
+    
+    wrapper.appendChild(dpadContain);
+    wrapper.appendChild(btnContain);
+  }
 
   // 文本控件构建函数
   function createLabelControl(control, wrapper) {
@@ -263,7 +283,7 @@ const mainModule = (() => {
           case 'label': createLabelControl(control, item); break;
           case 'ch5-button': createCh5ButtonControl(control, item); break;
           case 'volume': createVolumeControl(control, item); break;
-          case 'widget': createWidgetControl(control, item); break;
+          case 'dpad': createDpadControl(control, item); break;
           default: item.textContent = `未知控件 ${control.type},检查配置文件`;
         }
         grid.appendChild(item);

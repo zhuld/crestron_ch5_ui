@@ -110,6 +110,21 @@
               "icon": "fas fa-cogs"
             }
           ]
+        },
+        {
+          "title": "摄像头",
+          "icon": "fas fa-info-circle",
+          "columns": 1,
+          "rows": 1,
+          "widthRatio": "1",
+          "controls": [
+            {
+              "type": "dpad",
+              "label": "系统状态: 正常",
+              "icon": "fas fa-check-circle",
+              "join": "Dpad"
+            }
+          ]
         }
       ]
     }
