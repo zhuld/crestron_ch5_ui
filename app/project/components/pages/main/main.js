@@ -115,8 +115,8 @@ const mainModule = (() => {
     btnLabel.innerHTML = '<template>' + btnLabel.innerHTML + '</template>';
     btn.appendChild(btnLabel);
 
-    btn.stretch = 'both';
-    //btn.height = '200px';
+    btn.setAttribute('stretch', 'both');
+    //btn.setAttribute('sharp','rounded rectangle');
 
     btn.sendEventOnClick = control.join ? control.join : '';
     btn.receiveStateSelected = control.join ? control.join + "_Fb" : '';
@@ -132,38 +132,36 @@ const mainModule = (() => {
   function createVolumeControl(control, wrapper) {
     const join = control.join || '';
     const label = document.createElement('div');
-    label.className = 'volume-label';
+    label.setAttribute('classNaem', 'volume-label');
     label.innerHTML = `${escapeHtml(control.label)}`;
 
     const twoColumns = document.createElement('div');
-    twoColumns.className = 'dual-columns';
-
+    twoColumns.classList.add('dual-columns');
     const columnSlider = document.createElement('div');
-    columnSlider.className = 'volume-slider';
+    columnSlider.classList.add('volume-slider');
 
     const slider = document.createElement('ch5-slider');
-    slider.orientation = 'vertical';
-    slider.stretch = 'both';
-    slider.min = '-40';
-    slider.max = '10';
-    slider.step = '1';
-    slider.ticks = '{"0":"-40", "20":"-30", "40":"-20", "60":"-10", "80": "0", "100" : "10" }';
-    slider.showTickValues = true;
-    slider.tapSettable = true;
-    slider.handleSize = "large";
+    slider.setAttribute('orientation', 'vertical');
+    slider.setAttribute('stretch','both');
+    slider.setAttribute('min', '-40');
+    slider.setAttribute('max', '10');
+    slider.setAttribute('step', '1');
+    slider.setAttribute('ticks', '{"0":"-40", "20":"-30", "40":"-20", "60":"-10", "80": "0", "100" : "10" }');
+    slider.setAttribute('showTickValues', 'true');
+    slider.setAttribute('tapSettable', 'true');
+    slider.setAttribute('size', 'large');
 
     columnSlider.appendChild(slider);
 
     const columnButtons = document.createElement('div');
-    columnButtons.className = 'volume-buttons';
+    columnButtons.classList.add('volume-buttons');
 
     const btnPlus = makeCh5Button('', 'fas fa-plus', join + '_plus', join + '_enable')
     const btnMinus = makeCh5Button('', 'fas fa-minus', join + '_minus', join + '_enable')
     const btnMute = makeCh5Button('', 'fas fa-volume-up', join + '_mute', join + '_enable')
     const value = document.createElement('div');
-    value.className = 'volume-value';
+    value.classList.add('volume-value');
     value.innerHTML = '0';
-    value.id = 'volume-value';
 
     columnButtons.appendChild(value);
     columnButtons.appendChild(btnPlus);
@@ -196,7 +194,8 @@ const mainModule = (() => {
     btnLabel.innerHTML = '<template>' + btnLabel.innerHTML + '</template>';
     btn.appendChild(btnLabel);
 
-    btn.stretch = 'both';
+    btn.setAttribute('stretch' , 'both');
+    //btn.stretch = 'both';
 
     btn.sendEventOnClick = join ? join : '';
     btn.receiveStateSelected = join ? join + "_Fb" : '';
@@ -211,13 +210,13 @@ const mainModule = (() => {
   function createDpadControl(control, wrapper) {
     const join = control.join || '';
     const dpadContain = document.createElement('div');
-    dpadContain.className = 'dpad-item';
+    dpadContain.classList.add('dpad-item');
 
     dpadContain.innerHTML = `<ch5-dpad stretch="height" shape="circle" contractName=${join}></ch5-dpad>`;
 
 
     const btnContain = document.createElement('div');
-    btnContain.className = 'dpad-buttons';
+    btnContain.classList.add('dpad-buttons');
 
     const btnPlus = makeCh5Button('', 'fas fa-plus', join + '_plus', join + '_enable');
     const btnMinus = makeCh5Button('', 'fas fa-minus', join + '_minus', join + '_enable');
@@ -234,37 +233,37 @@ const mainModule = (() => {
   function createVideoControl(control, wrapper) {
     const videoSwitch = document.createElement('ch5-video-switcher');
     //videoSwitch.numberofscreencolumns = 2;
-    videoSwitch.contractName = control.join || '';
+    videoSwitch.setAttribute('contractName', "control.join || ''");
     //videoSwitch.setAttribute('sourcelistposition','left');
     if (control.sources) {
       control.sources.forEach(source => {
-          const sourceElement = document.createElement('ch5-video-switcher-source');
-          sourceElement.iconClass = `${source.icon}`;
-          const sourceLabel = document.createElement('ch5-video-switcher-source-label');
-          sourceLabel.innerHTML = `<template>${source.label}</template>`;
-          sourceElement.appendChild(sourceLabel);
-          videoSwitch.appendChild(sourceElement);
+        const sourceElement = document.createElement('ch5-video-switcher-source');
+        sourceElement.setAttribute('iconClass',`${source.icon}`);
+        const sourceLabel = document.createElement('ch5-video-switcher-source-label');
+        sourceLabel.innerHTML = `<template>${source.label}</template>`;
+        sourceElement.appendChild(sourceLabel);
+        videoSwitch.appendChild(sourceElement);
       });
     }
-    videoSwitch.setAttribute('numberOfSoures',`${control.sources.length}`)
+    videoSwitch.setAttribute('numberOfSoures', `${control.sources.length}`)
     if (control.screens) {
       control.screens.forEach(screen => {
-          const screenElement = document.createElement('ch5-video-switcher-screen');
-          const screenLabel = document.createElement('ch5-video-switcher-screen-label');
-          screenLabel.innerHTML = `<template>${screen.label}</template>`;
-          screenElement.appendChild(screenLabel);
-          videoSwitch.appendChild(screenElement);
+        const screenElement = document.createElement('ch5-video-switcher-screen');
+        const screenLabel = document.createElement('ch5-video-switcher-screen-label');
+        screenLabel.innerHTML = `<template>${screen.label}</template>`;
+        screenElement.appendChild(screenLabel);
+        videoSwitch.appendChild(screenElement);
       });
     }
-    videoSwitch.setAttribute('numberOfScreens',`4`);
-    videoSwitch.setAttribute('numberOfScreenColumns',`2`);
-    
+    videoSwitch.setAttribute('numberOfScreens', `4`);
+    videoSwitch.setAttribute('numberOfScreenColumns', `2`);
+
     wrapper.appendChild(videoSwitch);
   }
   // 文本控件构建函数
   function createLabelControl(control, wrapper) {
     const text = document.createElement('div');
-    text.className = 'text-control';
+    text.classList.add('text-control');
     text.innerHTML = `${renderIcon(control.icon)} <span>${escapeHtml(control.label)} </span>`;
     wrapper.appendChild(text);
   }
@@ -272,7 +271,7 @@ const mainModule = (() => {
   // ========== 通知提示 ==========
   function showNotification(message) {
     const notification = document.createElement('div');
-    notification.className = 'notification';
+    notification.classList.add('notification');
     notification.innerHTML = `${renderIcon('fas fa-check')} ${message}`;
     document.body.appendChild(notification);
 

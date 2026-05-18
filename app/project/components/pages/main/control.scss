@@ -25,6 +25,7 @@
     backdrop-filter: blur(2px);
 }
 
+
 .control-item .ch5-button::before {
     content: '';
     position: absolute;
@@ -34,7 +35,7 @@
     bottom: 4px;
     background: var(--ch5-button-bg-before);
     pointer-events: none;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .control-item .ch5-button::after {
@@ -42,20 +43,23 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     background: var(--ch5-button-bg-after);
     box-shadow: var(--ch5-button-box-shadow-after);
-    border-radius: 50%;
     opacity: 0.9;
+    border-radius: 4px;
     transition: all 0.1s;
 }
+
+
 
 /* 悬浮反馈（桌面效果） */
 .control-item .ch5-button--pressed {
     transform: scale(0.95);
     box-shadow: var(--ch5-button-box-shadow-pressed);
     background: var(--ch5-button-background-pressed);
+    border-radius: 20px;
 }
 
 /* 【核心触摸反馈】使用 scale + 位移 + 光效，确保 iPad/Surface 触摸明显 */
@@ -66,12 +70,14 @@
     background: var(--ch5-button-background-active);
     color: #001e2c;
     animation: touchPulse 0.12s ease-out;
+    border-radius: 20px;
 }
 
 .control-item .ch5-button--selected::after {
     background: var(--ch5-button-bg-active-after);
     box-shadow: var(--ch5-button-box-shadow-active-after);
     transform: scale(1.25);
+    border-radius: 20px;
 }
 
 @keyframes touchPulse {
@@ -103,8 +109,9 @@
 
 /* label 样式 */
 .text-control {
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    align-items: baseline;
+    justify-content: start;
     margin: 1rem;
     font-size: 1rem;
     color: var(--text-primary);
@@ -140,11 +147,12 @@
 
 .control-item .volume-slider {
     width: 70%;
-    display: grid;    
+    display: grid;
 }
 
 .control-item .volume-buttons {
     width: 30%;
+    min-width: 50px;
     display: flex;
     gap: 8%;
     flex-wrap: nowrap;
@@ -187,7 +195,7 @@
     grid-template-columns: auto auto;
     place-items: center;
     gap: 20%;
-    padding: 20px 20% 0px 20%;
+    padding: 20px 10% 0px 10%;
 }
 
 .ch5-dpad {
@@ -198,8 +206,13 @@
 }
 
 /* video switcher */
-.ch5-video-switcher{
-    height: 100%;
+.ch5-video-switcher {
+    //height: 100%;
+    --ch5-video-switcher--background-color: var(--ch5-slider-bg);
+    --ch5-video-switcher--border-color: var(--ch5-slider-handle-border);
+    --ch5-video-switcher--border-radius: 10px;
+    --ch5-video-switcher--screen-container-background-color: var(--ch5-button-label);
+    //--ch5-video-switcher--width: 100%;
     //display: grid;
     //place-items: center;
 }
