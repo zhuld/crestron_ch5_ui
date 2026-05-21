@@ -202,7 +202,6 @@
     --ch5-dpad--default-background-color: var(--ch5-slider-bg);
     --ch5-dpad--default-pressed-background-color: var(--ch5-button-label);
     --ch5-dpad--default-color: var(--ch5-button-label);
-
 }
 
 /* video switcher */
@@ -212,7 +211,4 @@
     --ch5-video-switcher--border-color: var(--ch5-slider-handle-border);
     --ch5-video-switcher--border-radius: 10px;
     --ch5-video-switcher--screen-container-background-color: var(--ch5-button-label);
-    //--ch5-video-switcher--width: 100%;
-    //display: grid;
-    //place-items: center;
 }

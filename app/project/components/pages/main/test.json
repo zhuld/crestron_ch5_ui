@@ -87,7 +87,7 @@
           "screencolumns": "2",
           "columns": 1,
           "rows": 1,
-          "widthRatio": "3",
+          "widthRatio": "2",
           "controls": [
             {
               "type": "videoswitch",

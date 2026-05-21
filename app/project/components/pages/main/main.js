@@ -214,7 +214,6 @@ const mainModule = (() => {
 
     dpadContain.innerHTML = `<ch5-dpad stretch="height" shape="circle" contractName=${join}></ch5-dpad>`;
 
-
     const btnContain = document.createElement('div');
     btnContain.classList.add('dpad-buttons');
 
